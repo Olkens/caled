@@ -10,6 +10,7 @@ import com.reopen.calendar.repositories.UserRepository
 import com.reopen.calendar.types.Email
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
@@ -36,7 +37,9 @@ class AuthService(
         authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(request.username, request.password)
         )
-        val user = userRepository.findByUsername(request.username)!!
+        val user = userRepository.findByUsername(request.username)
+            ?: throw UsernameNotFoundException("Użytkownik nie znaleziony")
+
         return AuthResponse(token = jwtService.generateToken(user))
     }
 }

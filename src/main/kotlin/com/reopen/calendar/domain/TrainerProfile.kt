@@ -15,11 +15,11 @@ import jakarta.persistence.Table
 @Table(name = "trainer_profiles")
 class TrainerProfile(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    var id: Long = 0,
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    val user: User,
+    var user: User,
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -27,10 +27,10 @@ class TrainerProfile(
         joinColumns = [JoinColumn(name = "trainer_id")],
         inverseJoinColumns = [JoinColumn(name = "category_id")]
     )
-    val categories: MutableList<TrainingCategory> = mutableListOf(),
+    var categories: MutableList<TrainingCategory> = mutableListOf(),
 
-    val yearsOfExperience: Int = 0,
-    val pricePerHour: Int = 0,
+    var yearsOfExperience: Int = 0,
+    var pricePerHour: Int = 0,
 
-) {
+    ) {
 }

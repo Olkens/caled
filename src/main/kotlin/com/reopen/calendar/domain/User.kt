@@ -15,8 +15,7 @@ class User(
     @Column(unique = true)
     private val username: String,
 
-    @Column(unique = true)
-    private val email: Email,
+    @Column(unique = true) val email: Email,
 
     private val password: String?,
 

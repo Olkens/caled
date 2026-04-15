@@ -23,7 +23,7 @@ class SecurityConfig(
         http {
             csrf { disable() }
             authorizeHttpRequests {
-                authorize("/api/auth/**", permitAll)   // login i register publiczne
+                authorize("/api/auth/**", permitAll)
                 authorize("/api/admin/**", hasRole("ADMIN"))
                 authorize(anyRequest, authenticated)
             }

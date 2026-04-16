@@ -10,17 +10,17 @@ import org.springframework.security.core.userdetails.UserDetails
 @Table(name = "users")
 class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    var id: Long = 0,
 
     @Column(unique = true)
-    private val username: String,
+    private var username: String,
 
-    @Column(unique = true) val email: Email,
+    @Column(unique = true) var email: Email,
 
-    private val password: String?,
+    private var password: String?,
 
     @Enumerated(EnumType.STRING)
-    val role: Role = Role.USER
+    var role: Role = Role.USER
 
 ) : UserDetails {
     override fun getUsername() = username

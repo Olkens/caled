@@ -3,7 +3,7 @@ package com.reopen.calendar.controllers
 import com.reopen.calendar.dto.trainer.TrainerSaveRequestDTO
 import com.reopen.calendar.dto.trainer.TrainersGETRequestDTO
 import com.reopen.calendar.dto.trainer.TrainersGETResponseDTO
-import com.reopen.calendar.dto.trainer.TrainersPOSTResponseDTO
+import com.reopen.calendar.dto.trainer.TrainersSaveResponseDTO
 import com.reopen.calendar.services.TrainerService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -26,7 +26,7 @@ class TrainerRESTController(private val trainerService: TrainerService) {
     @PostMapping("/")
     fun saveTrainer(
         @ModelAttribute dto: TrainerSaveRequestDTO
-    ):ResponseEntity<TrainersPOSTResponseDTO> {
+    ):ResponseEntity<TrainersSaveResponseDTO> {
         return ResponseEntity.ok(trainerService.saveTrainer(dto))
     }
 }

@@ -1,6 +1,6 @@
 package com.reopen.calendar.dto.trainer
 
-data class TrainersPOSTResponseDTO(
+data class TrainersSaveResponseDTO(
     val id: Long,
     val userId: Long,
     val categoryIds: List<Long>,

@@ -12,13 +12,13 @@ import jakarta.persistence.Table
 @Table(name = "training_categories")
 class TrainingCategory(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    var id: Long = 0,
 
     @ManyToMany(mappedBy = "categories")
-    val trainers: MutableSet<TrainerProfile> = mutableSetOf(),
+    var trainers: MutableSet<TrainerProfile> = mutableSetOf(),
 
-    val name: String,
-    val description: String,
+    var name: String,
+    var description: String,
 
-) {
+    ) {
 }

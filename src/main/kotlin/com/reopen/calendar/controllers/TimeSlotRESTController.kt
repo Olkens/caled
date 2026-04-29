@@ -24,10 +24,10 @@ class TimeSlotRESTController (
     fun getTimeSlots(
         @RequestParam start: String,
         @RequestParam end: String
-    ): List<TimeSlot> {
+    ): ResponseEntity<List<TimeSlot>> {
         val from = LocalDateTime.parse(start)
         val to = LocalDateTime.parse(end)
-        return repository.findAllByTimeStartBetween(from, to)
+        return ResponseEntity.ok(repository.findAllByTimeStartBetween(from, to))
     }
 
     @PostMapping("/")

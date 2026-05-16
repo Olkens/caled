@@ -15,6 +15,7 @@ object TrainerMapper {
                 id = trainer.user.id,
                 email = trainer.user.email
             ),
+            description = trainer.description,
             yearsOfExperience = trainer.yearsOfExperience,
             pricePerHour = trainer.pricePerHour
         )

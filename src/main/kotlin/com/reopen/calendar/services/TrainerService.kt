@@ -41,6 +41,7 @@ class TrainerService(
         val trainerProfile = TrainerProfile(
             user = user,
             categories = categories,
+            description = dto.description,
             yearsOfExperience = dto.yearsOfExperience
         )
 
@@ -50,6 +51,7 @@ class TrainerService(
             id = saved.id,
             userId = saved.user.id,
             categoryIds = saved.categories.map { it.id },
+            description = saved.description,
             yearsOfExperience = saved.yearsOfExperience,
             pricePerHour = saved.pricePerHour
         )

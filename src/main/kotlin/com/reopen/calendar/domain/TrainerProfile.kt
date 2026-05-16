@@ -28,7 +28,7 @@ class TrainerProfile(
         inverseJoinColumns = [JoinColumn(name = "category_id")]
     )
     var categories: MutableList<TrainingCategory> = mutableListOf(),
-
+    var description: String,
     var yearsOfExperience: Int = 0,
     var pricePerHour: Int = 0,
 

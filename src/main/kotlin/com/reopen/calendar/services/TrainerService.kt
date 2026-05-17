@@ -2,7 +2,6 @@ package com.reopen.calendar.services
 
 import com.reopen.calendar.domain.TrainerProfile
 import com.reopen.calendar.dto.trainer.TrainerSaveRequestDTO
-import com.reopen.calendar.dto.trainer.TrainersGETRequestDTO
 import com.reopen.calendar.dto.trainer.TrainersGETResponseDTO
 import com.reopen.calendar.dto.trainer.TrainersSaveResponseDTO
 import com.reopen.calendar.mappers.trainers.TrainerMapper
@@ -16,16 +15,16 @@ class TrainerService(
     private val trainerRepository: TrainerRepository,
     private val trainerMapper: TrainerMapper,
     private val userRepository: UserRepository,
-    private val trainingCategoryRepositry: TrainingCategoryRepository
+    private val trainingCategoryRepository: TrainingCategoryRepository
 ) {
 
-    fun findByCategories(dto: TrainersGETRequestDTO): List<TrainersGETResponseDTO> {
+    fun findByCategories(categoryIds: List<Long>?, categoryNames: List<String>?): List<TrainersGETResponseDTO> {
         val trainers = when {
-            dto.categoryIds.isNotEmpty() ->
-                trainerRepository.findByCategoryIds(dto.categoryIds)
+            categoryIds?.isNotEmpty() == true ->
+                trainerRepository.findByCategoryIds(categoryIds)
 
-            dto.categoryNames.isNotEmpty() ->
-                trainerRepository.findByCategoryNames(dto.categoryNames)
+            categoryNames?.isNotEmpty() == true ->
+                trainerRepository.findByCategoryNames(categoryNames)
 
             else -> trainerRepository.findAll()
         }
@@ -36,7 +35,7 @@ class TrainerService(
         val user = userRepository.findById(dto.userId)
             .orElseThrow { NoSuchElementException("User not found with id: ${dto.userId}") }
 
-        val categories = trainingCategoryRepositry.findAllById(dto.categoryIds).toMutableList()
+        val categories = trainingCategoryRepository.findAllById(dto.categoryIds).toMutableList()
 
         val trainerProfile = TrainerProfile(
             user = user,

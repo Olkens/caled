@@ -4,4 +4,5 @@ data class TrainerSaveRequestDTO (
     val userId: Long,
     val description: String,
     val categoryIds: List<Long> = emptyList(),
-    val yearsOfExperience: Int)
+    val yearsOfExperience: Int
+)

@@ -14,7 +14,7 @@ interface TrainerRepository : JpaRepository<TrainerProfile, Long> {
         WHERE c.id IN :categoryIds
     """)
     fun findByCategoryIds(
-        @Param("categoryIds") categoryIds: List<Long>
+        @Param("categoryIds") categoryIds: List<Long>?
     ): List<TrainerProfile>
 
     @Query("""
@@ -23,6 +23,6 @@ interface TrainerRepository : JpaRepository<TrainerProfile, Long> {
         WHERE c.name IN :categoryNames
     """)
     fun findByCategoryNames(
-        @Param("categoryNames") categoryNames: List<String>
+        @Param("categoryNames") categoryNames: List<String>?
     ): List<TrainerProfile>
 }

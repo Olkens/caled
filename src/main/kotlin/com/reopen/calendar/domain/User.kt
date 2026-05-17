@@ -15,9 +15,13 @@ class User(
     @Column(unique = true)
     private var username: String,
 
-    @Column(unique = true) var email: Email,
+    @Column(unique = true)
+    var email: Email,
 
     private var password: String?,
+
+    @Column(name = "name")
+    var name: String,
 
     @Enumerated(EnumType.STRING)
     var role: Role = Role.USER

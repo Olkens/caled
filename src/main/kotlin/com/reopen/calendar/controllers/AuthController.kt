@@ -13,6 +13,7 @@ class AuthController(private val authService: AuthService) {
 
     @PostMapping("/register")
     fun register(@RequestBody request: RegisterRequest): ResponseEntity<AuthResponse> =
+        // aktualnie mozna sie rejestrowac tylko jako user
         ResponseEntity.ok(authService.register(request))
 
     @PostMapping("/login")

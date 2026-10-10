@@ -28,6 +28,9 @@ class User(
 
 ) : UserDetails {
     override fun getUsername() = username
+    fun changeUsername(newUsername: String) {
+        username = newUsername
+    }
     override fun getPassword() = password
     override fun getAuthorities(): Collection<GrantedAuthority> =
         listOf(SimpleGrantedAuthority("ROLE_${role.name}"))

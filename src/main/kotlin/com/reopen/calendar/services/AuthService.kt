@@ -26,7 +26,7 @@ class AuthService(
         val user = User(
             username = request.username,
             password = passwordEncoder.encode(request.password),
-            role = Role.valueOf(request.role.uppercase()),
+            role = Role.USER,
             name = request.name,
             email = Email(request.email)
         )
